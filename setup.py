@@ -29,6 +29,7 @@ setup(
             "black",
             "isort",
             "mypy",
+            "ruff>=0.5.0",
         ],
         "viz": [
             "matplotlib>=3.8",
