@@ -1,0 +1,23 @@
+# Hardware configuration for RouteKV Compiler experiments
+# Update these values to match your actual device
+
+gpu:
+  name: colab-a100-40gb
+  hbm_gb: 40
+  peak_bandwidth_tbps: 2.0
+  compute_tflops_bf16: 312
+
+cpu:
+  dram_gb: 83
+  pcie_bandwidth_gbps: 64   # PCIe 4.0 x16
+
+storage:
+  tier: local-ssd
+  capacity_gb: 200
+  read_bandwidth_gbps: 7.0
+
+# Bandwidth constants used by simulator (B/µs)
+bandwidth_bytes_per_us:
+  hbm: 2000000
+  dram: 50000
+  storage: 7000

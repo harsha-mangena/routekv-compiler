@@ -1,0 +1,39 @@
+# Experiment configuration for Phase 1 baseline sweep
+
+experiment:
+  name: phase1-baseline
+  description: "Baseline tiering policy comparison: LRU vs route-aware"
+
+model:
+  name: llama-3-8b        # swap for any open model on Colab
+  n_layers: 32
+  n_heads: 32
+  n_kv_heads: 8           # GQA
+  head_dim: 128
+
+workloads:
+  - name: retrieval
+    context_length: 32768
+    n_samples: 50
+  - name: summarisation
+    context_length: 16384
+    n_samples: 50
+  - name: chat
+    context_length: 4096
+    n_samples: 100
+
+tiering:
+  hbm_fraction: 0.25
+  dram_fraction: 0.45
+  storage_fraction: 0.30
+  prefetch_fraction: 0.50
+  hbm_threshold: 0.65     # cost model cutoff
+  dram_threshold: 0.30
+
+simulator:
+  n_steps: 256
+
+output:
+  dir: results/phase1
+  save_traces: true
+  save_decisions: true
